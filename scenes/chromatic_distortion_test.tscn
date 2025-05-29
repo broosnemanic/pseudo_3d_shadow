@@ -1,0 +1,79 @@
+[gd_scene load_steps=11 format=3 uid="uid://cbtw84gg2ol8u"]
+
+[ext_resource type="Texture2D" uid="uid://b72van4ynm86b" path="res://shaders/knight_black.png" id="1_b7ctq"]
+[ext_resource type="Texture2D" uid="uid://blrgj8rdt1rfc" path="res://shaders/LightTile.png" id="1_i2yd1"]
+[ext_resource type="Shader" uid="uid://ds6nkpnsy80qw" path="res://shaders/chromatic_chaos_distortion.gdshader" id="1_yls1p"]
+[ext_resource type="Script" uid="uid://6xmp4kilbqby" path="res://scenes/chromatic_distortion_test.gd" id="1_ymoqr"]
+[ext_resource type="Shader" uid="uid://carhcc2vw3ram" path="res://shaders/test00.gdshader" id="2_1cmjk"]
+[ext_resource type="Shader" uid="uid://bf5lvntab4kew" path="res://shaders/shadow_zoom.gdshader" id="5_ymoqr"]
+[ext_resource type="Texture2D" uid="uid://cg8a28xt1jwbe" path="res://icon.svg" id="7_qtx5h"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ymoqr"]
+shader = ExtResource("2_1cmjk")
+shader_parameter/offset_magnitude = 0.1
+shader_parameter/alpha = 1.0
+shader_parameter/angle_div = 2.55
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qtx5h"]
+shader = ExtResource("5_ymoqr")
+shader_parameter/debug = false
+shader_parameter/border_scale = 1.5
+shader_parameter/shadow_offset = Vector2(-18.765, -33.565)
+shader_parameter/color = Color(0, 0, 0, 0.454902)
+shader_parameter/blur_amount = 5.0
+shader_parameter/shadow_scale = 5.0
+shader_parameter/disable_rotating = false
+shader_parameter/zoom = 1.067
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i2yd1"]
+shader = ExtResource("1_yls1p")
+shader_parameter/chaos = 3.841
+shader_parameter/radius = 1.0
+shader_parameter/attenuation = 5.0
+
+[node name="Node2D" type="Node2D" node_paths=PackedStringArray("light_source")]
+script = ExtResource("1_ymoqr")
+light_source = NodePath("LightSource")
+
+[node name="LightTile" type="Sprite2D" parent="."]
+position = Vector2(64, 71)
+texture = ExtResource("1_i2yd1")
+
+[node name="Icon" type="Sprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_ymoqr")
+position = Vector2(64, 66)
+texture = ExtResource("1_b7ctq")
+
+[node name="Icon2" type="Sprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_qtx5h")
+position = Vector2(64, 66)
+texture = ExtResource("1_b7ctq")
+
+[node name="Icon3" type="Sprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_qtx5h")
+position = Vector2(64, 66)
+texture = ExtResource("1_b7ctq")
+
+[node name="Icon4" type="Sprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_qtx5h")
+position = Vector2(256, 72)
+texture = ExtResource("1_b7ctq")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_i2yd1")
+custom_minimum_size = Vector2(128, 128)
+offset_right = 128.0
+offset_bottom = 128.0
+
+[node name="LightSource" type="Node2D" parent="."]
+position = Vector2(100, 100)
+
+[node name="Icon5" type="Sprite2D" parent="LightSource"]
+z_index = 10
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("7_qtx5h")
