@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://6xmp4kilbqby" path="res://scenes/chromatic_distortion_test.gd" id="1_ymoqr"]
 [ext_resource type="Shader" uid="uid://carhcc2vw3ram" path="res://shaders/test00.gdshader" id="2_1cmjk"]
 [ext_resource type="Shader" uid="uid://bf5lvntab4kew" path="res://shaders/shadow_zoom.gdshader" id="5_ymoqr"]
-[ext_resource type="Texture2D" uid="uid://cg8a28xt1jwbe" path="res://icon.svg" id="7_qtx5h"]
+[ext_resource type="Texture2D" uid="uid://crho6wswf32nh" path="res://icons/torch2.png" id="7_qtx5h"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ymoqr"]
 shader = ExtResource("2_1cmjk")
@@ -36,6 +36,7 @@ script = ExtResource("1_ymoqr")
 light_source = NodePath("LightSource")
 
 [node name="LightTile" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(64, 71)
 texture = ExtResource("1_i2yd1")
 
