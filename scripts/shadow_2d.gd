@@ -7,7 +7,7 @@ class_name Shadow2D
 		sprite = a_sprite
 		update_configuration_warnings()
 		
-@export var light_source: Node2D:				# Provides light source location
+@export var light_source: ZTracker:				# Provides light source location
 	set(a_source):
 		light_source = a_source
 		update_configuration_warnings()

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b72van4ynm86b"
-path="res://.godot/imported/knight_black.png-8c0235eaa79796579fb71ed6f392ee25.ctex"
+uid="uid://crho6wswf32nh"
+path="res://.godot/imported/torch.png-4622991b0e84134ab155c1e946457c2c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://shaders/knight_black.png"
-dest_files=["res://.godot/imported/knight_black.png-8c0235eaa79796579fb71ed6f392ee25.ctex"]
+source_file="res://icons/torch.png"
+dest_files=["res://.godot/imported/torch.png-4622991b0e84134ab155c1e946457c2c.ctex"]
 
 [params]
 

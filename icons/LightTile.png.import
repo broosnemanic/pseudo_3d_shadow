@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://jb8sm1hao6ks"
-path="res://.godot/imported/chess_knight_black.png-da310fc037f986736f7f5daac81e7c0d.ctex"
+uid="uid://blrgj8rdt1rfc"
+path="res://.godot/imported/LightTile.png-95c4036177da4354415cdf06b5d294bb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://shaders/chess_knight_black.png"
-dest_files=["res://.godot/imported/chess_knight_black.png-da310fc037f986736f7f5daac81e7c0d.ctex"]
+source_file="res://icons/LightTile.png"
+dest_files=["res://.godot/imported/LightTile.png-95c4036177da4354415cdf06b5d294bb.ctex"]
 
 [params]
 

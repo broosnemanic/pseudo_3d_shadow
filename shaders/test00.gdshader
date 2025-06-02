@@ -21,7 +21,7 @@ vec2 rotated_uv(vec2 a_uv, vec2 a_pivot, float a_angle)
 {
 	mat2 rotation = mat2(vec2(sin(a_angle), -cos(a_angle)),
 			vec2(cos(a_angle), sin(a_angle)));
-    
+
     a_uv -= a_pivot;
     a_uv = a_uv * rotation;
     a_uv += a_pivot;
@@ -41,7 +41,7 @@ void fragment() {
 	count = 1.0;
 	//offset = offset_magnitude * sin(TIME * 50.0 * offset_magnitude);
 	offset = offset_magnitude * pow(sin(TIME * 30.0 * offset_magnitude), 3.);
-	
+
 	if (COLOR.a == 0.0){
 //		if (texture(TEXTURE, UV - vec2(offset, 0.0)).a > 0.0){
 //			c_color.a = alpha;
