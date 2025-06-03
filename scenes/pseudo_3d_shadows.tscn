@@ -1,0 +1,94 @@
+[gd_scene load_steps=11 format=3 uid="uid://cbtw84gg2ol8u"]
+
+[ext_resource type="Script" uid="uid://6xmp4kilbqby" path="res://scripts/pseudo_3d_shadows.gd" id="1_1evir"]
+[ext_resource type="Texture2D" uid="uid://glrck5dwfv7i" path="res://icons/stone_wall.jpg" id="2_ygl0j"]
+[ext_resource type="Script" uid="uid://bv7t7pd7e68oa" path="res://scripts/pseudo_node_3d.gd" id="3_o414k"]
+[ext_resource type="Texture2D" uid="uid://j0j2e4o53411" path="res://icons/128x128 textures (80).png" id="4_6sxmu"]
+[ext_resource type="Texture2D" uid="uid://crho6wswf32nh" path="res://icons/torch.png" id="5_a5xhc"]
+[ext_resource type="Texture2D" uid="uid://b72van4ynm86b" path="res://icons/knight_black.png" id="6_10quv"]
+[ext_resource type="Texture2D" uid="uid://br22pxs2asi2m" path="res://icons/Dead.png" id="7_uhyqj"]
+[ext_resource type="Shader" uid="uid://bf5lvntab4kew" path="res://shaders/shadow_zoom.gdshader" id="8_o414k"]
+[ext_resource type="Script" uid="uid://ctdsoborq7a1u" path="res://scripts/pseudo_shadow_3d.gd" id="9_6sxmu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o414k"]
+shader = ExtResource("8_o414k")
+shader_parameter/debug = false
+shader_parameter/border_scale = 2.0
+shader_parameter/shadow_offset = Vector2(nan, nan)
+shader_parameter/color = Color(0, 0, 0, 0.12549)
+shader_parameter/blur_amount = 5.0
+shader_parameter/shadow_scale = 1.375
+shader_parameter/disable_rotating = false
+shader_parameter/zoom = inf
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_1evir")
+
+[node name="StoneWall" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(497, 409)
+texture = ExtResource("2_ygl0j")
+
+[node name="LightSource" type="Node2D" parent="."]
+unique_name_in_owner = true
+z_index = 30
+position = Vector2(100, 50)
+script = ExtResource("3_o414k")
+metadata/_custom_type_script = "uid://bv7t7pd7e68oa"
+
+[node name="PointLight2D" type="PointLight2D" parent="LightSource"]
+scale = Vector2(2, 2)
+energy = 1.55
+texture = ExtResource("4_6sxmu")
+
+[node name="Torch" type="Sprite2D" parent="LightSource"]
+unique_name_in_owner = true
+z_index = 30
+z_as_relative = false
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("5_a5xhc")
+
+[node name="LightSource2" type="Node2D" parent="."]
+unique_name_in_owner = true
+z_index = 30
+position = Vector2(100, 50)
+script = ExtResource("3_o414k")
+metadata/_custom_type_script = "uid://bv7t7pd7e68oa"
+
+[node name="Torch" type="Sprite2D" parent="LightSource2"]
+z_index = 30
+z_as_relative = false
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("5_a5xhc")
+
+[node name="PointLight2D" type="PointLight2D" parent="LightSource2"]
+scale = Vector2(4, 4)
+energy = 0.57
+texture = ExtResource("4_6sxmu")
+
+[node name="Knight" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+z_index = 11
+z_as_relative = false
+position = Vector2(400, 400)
+texture = ExtResource("6_10quv")
+
+[node name="Cat" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+z_index = 11
+z_as_relative = false
+position = Vector2(500, 300)
+texture = ExtResource("7_uhyqj")
+
+[node name="PseudoShadow3D" type="Sprite2D" parent="Cat" node_paths=PackedStringArray("sprite", "light_source")]
+z_index = 1
+material = SubResource("ShaderMaterial_o414k")
+texture = ExtResource("7_uhyqj")
+script = ExtResource("9_6sxmu")
+sprite = NodePath("..")
+light_source = NodePath("../../LightSource")
+alpha = 0.5
+metadata/_custom_type_script = "uid://ctdsoborq7a1u"
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.351563, 0.351563, 0.351563, 1)

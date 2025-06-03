@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://blrgj8rdt1rfc"
-path="res://.godot/imported/LightTile.png-95c4036177da4354415cdf06b5d294bb.ctex"
+uid="uid://glrck5dwfv7i"
+path="res://.godot/imported/stone_wall.jpg-3b2775adf0368cfb169273e8fa0f9653.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icons/LightTile.png"
-dest_files=["res://.godot/imported/LightTile.png-95c4036177da4354415cdf06b5d294bb.ctex"]
+source_file="res://icons/stone_wall.jpg"
+dest_files=["res://.godot/imported/stone_wall.jpg-3b2775adf0368cfb169273e8fa0f9653.ctex"]
 
 [params]
 

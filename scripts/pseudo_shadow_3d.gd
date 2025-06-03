@@ -30,20 +30,20 @@ var blur_amount: float:							# How blurry?
 		blur_amount = a_amount
 		material.set_shader_parameter("blur_amount", blur_amount)
 
-var alpha: float:								# How transparent?
+@export var alpha: float:								# How transparent?
 	set(a_alpha):
 		alpha = a_alpha
-		var t_color: Color = material.get_shader_parameter("color")
-		t_color.a = a_alpha
-		material.set_shader_parameter("color", t_color)
+		if material != null:
+			var t_color: Color = material.get_shader_parameter("color")
+			t_color.a = a_alpha
+			material.set_shader_parameter("color", t_color)
 
-
-
+const default_z_delta: int = 10					# Count of z-ordering-levels behind parent
 
 func initialize():
 	if sprite != null and light_source != null:
-		
-		z_index = sprite.z_index - 10
+		alpha = alpha
+		z_index = sprite.z_index - default_z_delta
 		texture = sprite.texture
 		material = ShaderMaterial.new()
 		material.shader = shadow_shader
@@ -53,16 +53,18 @@ func initialize():
 
 
 func _process(delta: float) -> void:
-	material.set_shader_parameter("shadow_offset", shadow_offset())
-	#print("shadow_ofset: " + str(shadow_offset()))
-	material.set_shader_parameter("zoom", zoom)
-	#print("zoom: " + str(zoom))
+	if material != null:
+		recalculate_zoom()
+		recalculate_blur()
+		material.set_shader_parameter("shadow_offset", shadow_offset())
+		material.set_shader_parameter("zoom", zoom)
 
 
 func shadow_offset() -> Vector2:
-	#return zoom * (light_source.position - position) + (zoom - 1) * 0.5 * sprite.texture.get_size()
-	#return (shadow_delta_z / light_source_delta_z) * (light_source.position - position) + (zoom - 1) * 0.5 * sprite.texture.get_size()
-	return (shadow_delta_z / light_source.pseudo_position().z) * (light_source.position - sprite.position) + (zoom - 1) * 0.5 * sprite.texture.get_size()
+	if light_source != null:
+		return (shadow_delta_z / light_source.pseudo_position().z) * (light_source.position - sprite.position) + (zoom - 1) * 0.5 * sprite.texture.get_size()
+	else:
+		return Vector2.ZERO
 
 
 func recalculate_blur():
@@ -74,7 +76,7 @@ func _get_configuration_warnings():
 		return ["Requires a sprite: Sprite2D"]
 	if light_source == null:
 		return ["Requires a light_source: Node2D"]
-		
+
 
 func recalculate_zoom():
 	#zoom = (light_source_delta_z + shadow_delta_z) / light_source_delta_z

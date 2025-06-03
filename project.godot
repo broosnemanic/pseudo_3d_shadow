@@ -13,4 +13,3 @@ config_version=5
 config/name="pseudo_3d_shadow"
 run/main_scene="uid://cbtw84gg2ol8u"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icons/icon.svg"
